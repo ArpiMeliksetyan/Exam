@@ -37,9 +37,18 @@ public class PlaneServiceCorrection {
 
 //    Task_10
 
-    public Plane minimalCost(Plane[] planes) {
-        double min = planes[0].getCostOfPlane();
-        Plane plane = planes[0];
+     public Plane minimalCost(Plane[] planes) {
+        double min = 0;
+        Plane plane = null;
+
+
+        for (int i = 0; i < planes.length; i++) {
+            if (planes[i].isMilitary()) {
+                min = planes[i].getCostOfPlane();
+                plane = planes[i];
+                break;
+            }
+        }
 
         for (int i = 1; i < planes.length; i++) {
             if (planes[i].isMilitary() && planes[i].getCostOfPlane() < min) {
